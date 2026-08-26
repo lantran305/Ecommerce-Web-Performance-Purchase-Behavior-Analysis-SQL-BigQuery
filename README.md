@@ -24,10 +24,20 @@ The goal is to identify key performance trends, understand customer purchasing b
    - Analyze product-level conversion from view → add to cart → purchase and identify products purchased together.
 ...
 
-## 3. Dataset
-- Dataset từ đâu
-- Có những bảng nào
-- Số lượng records nếu đáng chú ý
+## 📂 Dataset Description & Data Structure
+
+**📌 Data Source**: The sample data is from **Google Analytics 4 (GA4)**, exported to **BigQuery**, including user activity data from the **Google Merchandise Store** e-commerce website.
+
+**📌 Data Size**:
+
+- **Dataset**: `ga4_obfuscated_sample_ecommerce`
+
+**📌 How to Access the Data:**
+1. Log in to your **Google Cloud Platform** account and create a new project.
+2. Open the **BigQuery Console** and select your project.
+3. Click on **"Add Data"** in the navigation panel, then choose **"Search a project"**.
+4. In the search bar, enter the project ID: `bigquery-public-data.google_analytics_sample.ga_sessions` and press **Enter**.
+5. Click on the `ga_sessions_` table to explore its structure and data.
 
 ## 4. Data Model
 - Mô tả relationship giữa các bảng
