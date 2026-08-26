@@ -1,5 +1,10 @@
 # Ecommerce-Web-Performance-Purchase-Behavior-Analysis-SQL-BigQuery
-# Project Title
+**Author:** Tran Thi Lan
+
+**Date:** 16/10/2002
+
+**Tools Used:** SQL
+
 
 ## 1. Project Overview
 - Project này làm gì?
