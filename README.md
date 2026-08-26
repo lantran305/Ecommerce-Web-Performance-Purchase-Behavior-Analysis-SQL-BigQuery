@@ -10,9 +10,7 @@
 ### 📖 What is this project about?
 This project uses **SQL** and **BigQuery** to analyze the performance of an e-commerce website, focusing on website traffic, user behavior, marketing channel performance, conversion, transactions, and revenue over time. 
 The goal is to identify key performance trends, understand customer purchasing behavior, and evaluate how different traffic sources and devices contribute to overall business performanc
-### What are Business Questions?
-## Business Questions
-
+### Business Questions
 1. **How is the e-commerce website performing?**
    - Analyze visits, pageviews, transactions, bounce rate, and revenue trends over time.
 
