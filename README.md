@@ -65,14 +65,3 @@ The goal is to identify key performance trends, understand customer purchasing b
 - Result
 - Insight
 
-## 7. Project Structure
-...
-
-## 8. How to Run
-...
-
-## 9. Key Takeaways
-...
-
-## 10. Author
-...
