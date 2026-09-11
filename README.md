@@ -72,7 +72,7 @@ Desktop generated $832.5K revenue (1.92% conversion) versus $27.8K on mobile (0.
 
 ## 6. Recommendations
 
-1. **Prioritize high-converting traffic sources over traffic volume.**
+**1. Prioritize high-converting traffic sources over traffic volume.**
 Focus on improving the quality and conversion of Google traffic, while maintaining the strong performance of Direct traffic.
 
 **2. Investigate and scale DFA campaigns for high-value products.**
