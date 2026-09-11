@@ -69,3 +69,17 @@ DFA contributed 43.65%, 33.21%, and 24.71% of their respective revenue.
 
 **4. Desktop generated over 95% of revenue, while mobile had a much lower conversion rate.**
 Desktop generated $832.5K revenue (1.92% conversion) versus $27.8K on mobile (0.38% conversion), despite mobile accounting for 133K visits.
+
+## 6. Recommendations
+
+1. **Prioritize high-converting traffic sources over traffic volume.**
+Focus on improving the quality and conversion of Google traffic, while maintaining the strong performance of Direct traffic.
+
+**2. Investigate and scale DFA campaigns for high-value products.**
+Analyze the campaigns/referrals behind DFA traffic for Google Men's Zip Hoodie, Google Hard Cover Journal, and Leatherette Journal, and scale the most effective ones based on revenue and ROI.
+
+**3. Prioritize high-revenue products in marketing and merchandising.**
+Give greater visibility and promotional focus to products such as Leatherette Journal, Google Men's Zip Hoodie, and Google Hard Cover Journal, which generate high revenue despite different sales volumes.
+
+**4. Investigate the mobile conversion funnel.**
+Review the product page → cart → checkout journey on mobile to identify where the large performance gap versus desktop occurs.
