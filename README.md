@@ -57,16 +57,6 @@ For this analysis, the raw data was transformed into two analytical tables:
 **`cleaned_products`**  
 `session_date`, `visitor_id`, `visit_id`, `source`, `medium`, `device_category`, `product_sku`, `product_name`, `product_category`, `product_price`, `product_quantity`, `product_revenue`
 
-### Data Preparation
-
-The raw GA data was cleaned and transformed by:
-
-- Converting date fields into standard `DATE` format
-- Handling missing traffic-source and device values
-- Excluding sessions with missing pageviews
-- Converting revenue from micro-units to USD
-- Extracting purchased products from nested e-commerce data
-- Creating session-level and product-level analytical tables
 ## 5. Query
 1.Check available date range
 <img width="520" height="79" alt="image" src="https://github.com/user-attachments/assets/4f2e2b63-a091-477c-bffa-a660a6bd0e98" />
