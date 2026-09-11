@@ -42,26 +42,7 @@ The goal is to identify key performance trends, understand customer purchasing b
 ## 4. Data Model
 - Mô tả relationship giữa các bảng
 - Có thể chèn ERD/schema diagram
-
-## 5. SQL Skills Demonstrated
-- SELECT / WHERE
-- JOIN
-- GROUP BY / HAVING
-- CTE
-- Window Functions
-- CASE WHEN
-- Subquery
-- Date functions
-- ...
-    
-## 6. Analysis & Key Insights
-### Question 1
-- SQL approach
-- Result
-- Insight
-
-### Question 2
-- SQL approach
-- Result
-- Insight
+## 5. Query
+1.Check available date range
+<img width="520" height="79" alt="image" src="https://github.com/user-attachments/assets/4f2e2b63-a091-477c-bffa-a660a6bd0e98" />
 
