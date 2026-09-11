@@ -61,7 +61,7 @@ For this analysis, the raw data was transformed into two analytical tables:
 
 ## Q1. Overall E-commerce Performance
 
-🔎 **Calculate monthly visits, transactions, revenue, and conversion rate from January to July 2017.**
+🔎 The goal of this analysis is to identify which traffic sources generate the most revenue and evaluate whether high-traffic sources also perform well in terms of conversion.
 
 🚀 **Query**
 
@@ -84,7 +84,7 @@ ORDER BY month;
 
 ## Q2. Traffic Source Performance
 
-**🔎 Identify high-traffic sources and compare their transactions, revenue, and conversion rates.**
+🔎The goal of this analysis is to identify which traffic sources generate the most revenue and evaluate whether high-traffic sources also perform well in terms of conversion.
 
 🚀 **Query**
 
@@ -107,7 +107,7 @@ ORDER BY revenue DESC;
 <img width="777" height="183" alt="image" src="https://github.com/user-attachments/assets/4dd5fd0f-8efe-443c-a454-4270d100ac78" />
 
 ## Q3. Source performance over time
-**🔎 Identify ....**
+🔎 The goal of this analysis is to determine whether the performance patterns of major traffic sources are consistent over time.
 
 🚀 **Query**
 
@@ -139,8 +139,9 @@ ORDER BY source, month;
 
 <img width="720" height="409" alt="image" src="https://github.com/user-attachments/assets/c4d035ae-a357-4128-805b-499bc6f7422c" />
 <img width="716" height="407" alt="image" src="https://github.com/user-attachments/assets/ecbe3598-c971-4012-a273-f251beb546f4" />
+
 ## Q4. Top 10 highest revenue products
-**🔎 Identify ....**
+🔎 The goal of this analysis is to understand which products contribute the most to e-commerce revenue and whether revenue is driven by sales volume or product value.
 
 🚀 **Query**
 
@@ -165,8 +166,8 @@ LIMIT 10;
 
 <img width="664" height="307" alt="image" src="https://github.com/user-attachments/assets/fda3b158-2a43-4c2b-8407-7bc6014f522a" />
 
-## Q6. Revenue share by traffic source for top 10 products
-**🔎 Identify ....**
+## Q5. Revenue share by traffic source for top 10 products
+🔎 The goal of this analysis is to identify which traffic sources contribute most to the revenue of high-performing products.
 
 🚀 **Query**
 
@@ -221,8 +222,8 @@ ORDER BY product_name;
 
 <img width="773" height="309" alt="image" src="https://github.com/user-attachments/assets/0ff706b0-fc0d-4d63-857b-b1216b15514d" />
 
-## Q7. Device performance
-**🔎 Identify ....**
+## Q6. Device performance
+🔎 The goal of this analysis is to identify differences in traffic, conversion, revenue, and revenue per visit across devices.
 
 🚀 **Query**
 
