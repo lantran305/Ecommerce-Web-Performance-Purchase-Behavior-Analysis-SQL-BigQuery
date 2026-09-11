@@ -42,6 +42,10 @@ The goal is to identify key performance trends, understand customer purchasing b
 ## 4. Data Model
 - Mô tả relationship giữa các bảng
 - Có thể chèn ERD/schema diagram
+  
+Granularity = 1 row ≈ 1 session (visit) của một visitor trong một ngày.
+Nói đơn giản:
+Mỗi dòng đại diện cho một lần truy cập website (session) của một người dùng.
 ## 5. Query
 1.Check available date range
 <img width="520" height="79" alt="image" src="https://github.com/user-attachments/assets/4f2e2b63-a091-477c-bffa-a660a6bd0e98" />
@@ -49,3 +53,5 @@ The goal is to identify key performance trends, understand customer purchasing b
 0.2 Check number of days by month
 <img width="324" height="246" alt="image" src="https://github.com/user-attachments/assets/b184c6e9-af9f-4173-b8a8-e8c5b142ab3c" />
 
+0.3 Check NULL / missing values
+<img width="933" height="75" alt="image" src="https://github.com/user-attachments/assets/16858777-0fe3-4bd2-87bb-4e27f0e6bd35" />
