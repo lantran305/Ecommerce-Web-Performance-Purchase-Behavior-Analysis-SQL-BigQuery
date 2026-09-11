@@ -19,28 +19,54 @@ Understand where revenue comes from, which factors influence e-commerce performa
 5. Which products generated the most revenue?
 6. Which traffic sources contributed the most revenue to the top products?
 7. How did e-commerce performance differ across devices?
+
+## 👥 Target Audience
+
+- ✔️ **Data Analysts & Business Analysts**
+- ✔️ **Digital Marketing Teams**
+- ✔️ **E-commerce Managers & Stakeholders**
+- ✔️ **Business Intelligence Teams**
+
 ## 📂 Dataset Description & Data Structure
 
-**📌 Data Source**: The sample data is from **Google Analytics 4 (GA4)**, exported to **BigQuery**, including user activity data from the **Google Merchandise Store** e-commerce website.
+**📌 Data Source:**  
+This project uses the **Google Analytics Sample Dataset**, containing session and e-commerce activity data from the **Google Merchandise Store**.
 
-**📌 Data Size**:
+**📌 Analysis Period:**  
+**January 2017 – July 2017**
 
-- **Dataset**: `ga4_obfuscated_sample_ecommerce`
+**📌 Original Dataset:**  
+`bigquery-public-data.google_analytics_sample.ga_sessions_*`
 
-**📌 How to Access the Data:**
-1. Log in to your **Google Cloud Platform** account and create a new project.
-2. Open the **BigQuery Console** and select your project.
-3. Click on **"Add Data"** in the navigation panel, then choose **"Search a project"**.
-4. In the search bar, enter the project ID: `bigquery-public-data.google_analytics_sample.ga_sessions` and press **Enter**.
-5. Click on the `ga_sessions_` table to explore its structure and data.
+The dataset consists of daily sharded `ga_sessions_YYYYMMDD` tables containing session-level information such as traffic sources, devices, pageviews, transactions, revenue, and product data.
 
-## 4. Data Model
-- Mô tả relationship giữa các bảng
-- Có thể chèn ERD/schema diagram
-  
-Granularity = 1 row ≈ 1 session (visit) của một visitor trong một ngày.
-Nói đơn giản:
-Mỗi dòng đại diện cho một lần truy cập website (session) của một người dùng.
+### Data Structure
+
+For this analysis, the raw data was transformed into two analytical tables:
+
+| Table | Granularity | Purpose |
+|---|---|---|
+| `cleaned_ga_sessions` | 1 row = 1 session | Traffic, conversion, revenue, and device analysis |
+| `cleaned_products` | 1 row = 1 purchased product occurrence | Product revenue and traffic-source analysis |
+
+### Key Fields
+
+**`cleaned_ga_sessions`**  
+`session_date`, `source`, `medium`, `visitor_id`, `visits`, `pageviews`, `transactions`, `revenue`, `device_category`, `operating_system`
+
+**`cleaned_products`**  
+`session_date`, `visitor_id`, `visit_id`, `source`, `medium`, `device_category`, `product_sku`, `product_name`, `product_category`, `product_price`, `product_quantity`, `product_revenue`
+
+### Data Preparation
+
+The raw GA data was cleaned and transformed by:
+
+- Converting date fields into standard `DATE` format
+- Handling missing traffic-source and device values
+- Excluding sessions with missing pageviews
+- Converting revenue from micro-units to USD
+- Extracting purchased products from nested e-commerce data
+- Creating session-level and product-level analytical tables
 ## 5. Query
 1.Check available date range
 <img width="520" height="79" alt="image" src="https://github.com/user-attachments/assets/4f2e2b63-a091-477c-bffa-a660a6bd0e98" />
