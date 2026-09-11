@@ -57,7 +57,76 @@ For this analysis, the raw data was transformed into two analytical tables:
 **`cleaned_products`**  
 `session_date`, `visitor_id`, `visit_id`, `source`, `medium`, `device_category`, `product_sku`, `product_name`, `product_category`, `product_price`, `product_quantity`, `product_revenue`
 
+
 ## 🔍 5. Analysis & Queries
+### 0. DATA VALIDATION
+- Check available date range
+- Check number of days by month
+- Check NULL / missing values
+- Check data types
+- Check invalid / abnormal values
+- Check duplicates
+- Create table
+
+🚀 **Query sample**
+
+```sql
+--create table 1: sessions
+CREATE OR REPLACE TABLE `fluid-axe-481410-j7.analytics.cleaned_ga_sessions` AS
+
+SELECT
+  PARSE_DATE('%Y%m%d', date) AS session_date,
+
+  COALESCE(trafficSource.source, 'unknown') AS source,
+  COALESCE(trafficSource.medium, 'unknown') AS medium,
+
+  fullVisitorId AS visitor_id,
+
+  totals.visits AS visits,
+  totals.pageviews AS pageviews,
+  totals.bounces AS bounces,
+  totals.transactions AS transactions,
+
+  COALESCE(totals.transactionRevenue, 0) / 1000000 AS revenue,
+
+  COALESCE(device.deviceCategory, 'unknown') AS device_category,
+  COALESCE(device.operatingSystem, 'unknown') AS operating_system
+
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+
+WHERE _TABLE_SUFFIX BETWEEN '20170101' AND '20170731'
+  AND totals.pageviews IS NOT NULL;
+
+--create table 2: product
+CREATE OR REPLACE TABLE `fluid-axe-481410-j7.analytics.cleaned_products` AS
+
+SELECT
+  PARSE_DATE('%Y%m%d', date) AS session_date,
+  fullVisitorId AS visitor_id,
+  visitId AS visit_id,
+
+  COALESCE(trafficSource.source, 'unknown') AS source,
+  COALESCE(trafficSource.medium, 'unknown') AS medium,
+
+  COALESCE(device.deviceCategory, 'unknown') AS device_category,
+
+  product.productSKU AS product_sku,
+  product.v2ProductName AS product_name,
+  product.v2ProductCategory AS product_category,
+
+  product.productPrice / 1000000 AS product_price,
+  product.productQuantity AS product_quantity,
+  product.productRevenue / 1000000 AS product_revenue
+
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`,
+UNNEST(hits) AS hit,
+UNNEST(hit.product) AS product
+
+WHERE _TABLE_SUFFIX BETWEEN '20170101' AND '20170731'
+  AND hit.eCommerceAction.action_type = '6'
+  AND product.v2ProductName IS NOT NULL;
+  
+```
 
 ### Q1. Overall E-commerce Performance
 
