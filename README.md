@@ -8,22 +8,17 @@
 
 ## 1. Project Overview
 ### 📖 What is this project about?
-This project uses **SQL** and **BigQuery** to analyze the performance of an e-commerce website, focusing on website traffic, user behavior, marketing channel performance, conversion, transactions, and revenue over time. 
-The goal is to identify key performance trends, understand customer purchasing behavior, and evaluate how different traffic sources and devices contribute to overall business performance.
+This project uses **SQL** and **BigQuery** to analyze e-commerce data from the Google Merchandise Store to understand the key drivers of revenue and conversion performance. Using Google Analytics data from January to July 2017, the analysis examines overall performance, traffic sources, product performance, and device usage to identify revenue opportunities and areas for improvement.
+
 ### Business Questions
-1. **How is the e-commerce website performing?**
-   - Analyze visits, pageviews, transactions, bounce rate, and revenue trends over time.
-
-2. **Which traffic sources and devices drive the best business performance?**
-   - Evaluate traffic, conversion rate, and revenue contribution by traffic source and device.
-
-3. **How do customers behave throughout the purchasing journey?**
-   - Compare browsing behavior between purchasers and non-purchasers and analyze purchasing frequency.
-
-4. **Which products and product journeys contribute to sales?**
-   - Analyze product-level conversion from view → add to cart → purchase and identify products purchased together.
-...
-
+Understand where revenue comes from, which factors influence e-commerce performance, and where the business should focus improvement efforts.
+1. How did traffic, transactions, conversion rate, and revenue change over time?
+2. Which traffic sources generated the most revenue and had the highest conversion rates?
+3. Which high-traffic sources had relatively low conversion performance?
+4. How did traffic source performance change over time?
+5. Which products generated the most revenue?
+6. Which traffic sources contributed the most revenue to the top products?
+7. How did e-commerce performance differ across devices?
 ## 📂 Dataset Description & Data Structure
 
 **📌 Data Source**: The sample data is from **Google Analytics 4 (GA4)**, exported to **BigQuery**, including user activity data from the **Google Merchandise Store** e-commerce website.
