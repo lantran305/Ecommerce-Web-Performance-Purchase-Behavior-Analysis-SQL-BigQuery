@@ -57,15 +57,202 @@ For this analysis, the raw data was transformed into two analytical tables:
 **`cleaned_products`**  
 `session_date`, `visitor_id`, `visit_id`, `source`, `medium`, `device_category`, `product_sku`, `product_name`, `product_category`, `product_price`, `product_quantity`, `product_revenue`
 
-## 5. Query
-1.Check available date range
-<img width="520" height="79" alt="image" src="https://github.com/user-attachments/assets/4f2e2b63-a091-477c-bffa-a660a6bd0e98" />
+# 🔍 5. Analysis & Queries
 
-0.2 Check number of days by month
-<img width="324" height="246" alt="image" src="https://github.com/user-attachments/assets/b184c6e9-af9f-4173-b8a8-e8c5b142ab3c" />
+## Q1. Overall E-commerce Performance
 
-0.3 Check NULL / missing values
-<img width="933" height="75" alt="image" src="https://github.com/user-attachments/assets/16858777-0fe3-4bd2-87bb-4e27f0e6bd35" />
+🔎 **Calculate monthly visits, transactions, revenue, and conversion rate from January to July 2017.**
+
+🚀 **Query**
+
+```sql
+SELECT 
+  FORMAT_DATE('%Y-%m', session_date) AS month, 
+  SUM(visits) AS visits, 
+  SUM(transactions) AS transactions, 
+  ROUND(SUM(revenue), 0) AS revenue, 
+  ROUND(SAFE_DIVIDE(SUM(transactions), SUM(visits)) * 100, 2) AS conversion_rate
+
+FROM `fluid-axe-481410-j7.analytics.cleaned_ga_sessions`
+
+GROUP BY month
+ORDER BY month;
+```
+**💡 Queries result**
+
+<img width="715" height="234" alt="image" src="https://github.com/user-attachments/assets/f281ad6a-81d9-4370-ac95-2522a9c4e267" />
+
+## Q2. Traffic Source Performance
+
+**🔎 Identify high-traffic sources and compare their transactions, revenue, and conversion rates.**
+
+🚀 **Query**
+
+```sql
+SELECT 
+  source, 
+  SUM(visits) AS visits, 
+  SUM(transactions) AS transactions, 
+  ROUND(SUM(revenue), 0) AS revenue, 
+  ROUND(SAFE_DIVIDE(SUM(transactions), SUM(visits)) * 100, 2) AS conversion_rate
+
+FROM `fluid-axe-481410-j7.analytics.cleaned_ga_sessions`
+
+GROUP BY source
+HAVING visits >= 5000
+ORDER BY revenue DESC;
+```
+**💡 Queries result**
+
+<img width="777" height="183" alt="image" src="https://github.com/user-attachments/assets/4dd5fd0f-8efe-443c-a454-4270d100ac78" />
+
+## Q3. Source performance over time
+**🔎 Identify ....**
+
+🚀 **Query**
+
+```sql
+SELECT
+  FORMAT_DATE('%Y-%m', session_date) AS month,
+  source,
+  SUM(visits) AS visits,
+  SUM(transactions) AS transactions,
+  SUM(revenue) AS revenue,
+  ROUND(
+    SAFE_DIVIDE(SUM(transactions), SUM(visits)) * 100,
+    2
+  ) AS conversion_rate
+
+FROM `fluid-axe-481410-j7.analytics.cleaned_ga_sessions`
+
+WHERE source IN (
+  '(direct)'
+, 'google'
+, 'youtube.com'
+, 'Partners'
+)
+GROUP BY month, source
+ORDER BY source, month;
+```
+**💡 Queries result**
+
+
+<img width="720" height="409" alt="image" src="https://github.com/user-attachments/assets/c4d035ae-a357-4128-805b-499bc6f7422c" />
+<img width="716" height="407" alt="image" src="https://github.com/user-attachments/assets/ecbe3598-c971-4012-a273-f251beb546f4" />
+## Q4. Top 10 highest revenue products
+**🔎 Identify ....**
+
+🚀 **Query**
+
+```sql
+SELECT
+  product_name,
+  SUM(product_quantity) AS quantity_sold,
+  ROUND(
+    SAFE_DIVIDE(
+      SUM(product_revenue),
+      SUM(product_quantity)
+    ),
+    2
+  ) AS avg_revenue_per_unit,
+  round(SUM(product_revenue),0) AS revenue
+FROM `fluid-axe-481410-j7.analytics.cleaned_products`
+GROUP BY product_name
+ORDER BY revenue DESC
+LIMIT 10;
+```
+**💡 Queries result**
+
+<img width="664" height="307" alt="image" src="https://github.com/user-attachments/assets/fda3b158-2a43-4c2b-8407-7bc6014f522a" />
+
+## Q6. Revenue share by traffic source for top 10 products
+**🔎 Identify ....**
+
+🚀 **Query**
+
+```sql
+----Identify the top 10 products by total revenue
+WITH top_products AS (
+  SELECT
+    product_name,
+    SUM(product_revenue) AS total_revenue
+  FROM `fluid-axe-481410-j7.analytics.cleaned_products`
+  GROUP BY product_name
+  ORDER BY total_revenue DESC
+  LIMIT 10
+),
+---- Calculate revenue by product and traffic source
+product_source AS (
+  SELECT
+    p.product_name,
+    CASE WHEN p.source IN ('(direct)', 'google', 'dfa')
+         THEN p.source ELSE 'other' END AS source,
+    SUM(p.product_revenue) AS revenue
+  FROM `fluid-axe-481410-j7.analytics.cleaned_products` AS p
+  JOIN top_products AS t
+    ON p.product_name = t.product_name
+  GROUP BY p.product_name, source
+),
+----Calculate each source's share of the product's total revenue
+product_share AS (
+  SELECT
+    product_name,
+    source,
+    SAFE_DIVIDE(
+      revenue,
+      SUM(revenue) OVER (PARTITION BY product_name)
+    ) * 100 AS revenue_share
+  FROM product_source
+)
+---- Pivot traffic sources into separate columns
+SELECT
+  product_name,
+  ROUND(MAX(CASE WHEN source = '(direct)' THEN revenue_share ELSE 0 END), 2) AS direct_share,
+  ROUND(MAX(CASE WHEN source = 'google' THEN revenue_share ELSE 0 END), 2) AS google_share,
+  ROUND(MAX(CASE WHEN source = 'dfa' THEN revenue_share ELSE 0 END), 2) AS dfa_share,
+  ROUND(MAX(CASE WHEN source = 'other' THEN revenue_share ELSE 0 END), 2) AS other_share
+
+FROM product_share
+
+GROUP BY product_name
+ORDER BY product_name;
+```
+**💡 Queries result**
+
+<img width="773" height="309" alt="image" src="https://github.com/user-attachments/assets/0ff706b0-fc0d-4d63-857b-b1216b15514d" />
+
+## Q7. Device performance
+**🔎 Identify ....**
+
+🚀 **Query**
+
+```sql
+SELECT
+  device_category,
+  SUM(visits) AS visits,
+  SUM(transactions) AS transactions,
+  SUM(revenue) AS revenue,
+  ROUND(
+    SAFE_DIVIDE(SUM(transactions), SUM(visits)) * 100,
+    2
+  ) AS conversion_rate,
+  ROUND(
+    SAFE_DIVIDE(SUM(revenue), SUM(visits)),
+    2
+  ) AS revenue_per_visit
+
+FROM `fluid-axe-481410-j7.analytics.cleaned_ga_sessions`
+
+GROUP BY device_category
+ORDER BY revenue DESC;
+```
+**💡 Queries result**
+
+<img width="716" height="127" alt="image" src="https://github.com/user-attachments/assets/3943b989-c735-4204-9759-921c8f7f7b6b" />
+
+
+
+
 
 ## 5.Key Insights
 
