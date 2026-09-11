@@ -55,3 +55,17 @@ Mỗi dòng đại diện cho một lần truy cập website (session) của m�
 
 0.3 Check NULL / missing values
 <img width="933" height="75" alt="image" src="https://github.com/user-attachments/assets/16858777-0fe3-4bd2-87bb-4e27f0e6bd35" />
+
+## 5.Key Insights
+
+1. April generated the highest revenue despite lower traffic than July.
+April generated $158.8K from 67,119 visits, compared with $124.5K from 71,796 visits in July.
+
+2. Direct was the largest revenue-generating traffic source, while Google generated similar traffic with much lower conversion.
+Direct generated $622K revenue from 187K visits (2.48% conversion), compared with $152K from Google’s 180K visits (0.92% conversion).
+
+3. DFA generated a large share of revenue for several(Google Men's Zip Hoodie, Google Hard Cover Journal, and Leatherette Journal).
+DFA contributed 43.65%, 33.21%, and 24.71% of their respective revenue.
+
+4. Desktop generated over 95% of revenue, while mobile had a much lower conversion rate.
+Desktop generated $832.5K revenue (1.92% conversion) versus $27.8K on mobile (0.38% conversion), despite mobile accounting for 133K visits.
