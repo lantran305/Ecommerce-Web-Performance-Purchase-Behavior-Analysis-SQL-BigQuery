@@ -344,30 +344,11 @@ ORDER BY revenue DESC;
 
 
 
-## 5.Key Insights
+## 5. Key Insights & Recommendations
 
-**1. April generated the highest revenue despite lower traffic than July.**
-April generated $158.8K from 67,119 visits, compared with $124.5K from 71,796 visits in July.
-
-**2. Direct was the largest revenue-generating traffic source, while Google generated similar traffic with much lower conversion.**
-Direct generated $622K revenue from 187K visits (2.48% conversion), compared with $152K from Google’s 180K visits (0.92% conversion).
-
-**3. DFA generated a large share of revenue for several top products (Google Men's Zip Hoodie, Google Hard Cover Journal, and Leatherette Journal).**
-DFA contributed 43.65%, 33.21%, and 24.71% of their respective revenue.
-
-**4. Desktop generated over 95% of revenue, while mobile had a much lower conversion rate.**
-Desktop generated $832.5K revenue (1.92% conversion) versus $27.8K on mobile (0.38% conversion), despite mobile accounting for 133K visits.
-
-## 6. Recommendations
-
-**1. Prioritize high-converting traffic sources over traffic volume.**
-Focus on improving the quality and conversion of Google traffic, while maintaining the strong performance of Direct traffic.
-
-**2. Investigate and scale DFA campaigns for high-value products.**
-Analyze the campaigns/referrals behind DFA traffic for Google Men's Zip Hoodie, Google Hard Cover Journal, and Leatherette Journal, and scale the most effective ones based on revenue and ROI.
-
-**3. Prioritize high-revenue products in marketing and merchandising.**
-Give greater visibility and promotional focus to products such as Leatherette Journal, Google Men's Zip Hoodie, and Google Hard Cover Journal, which generate high revenue despite different sales volumes.
-
-**4. Investigate the mobile conversion funnel.**
-Review the product page → cart → checkout journey on mobile to identify where the large performance gap versus desktop occurs.
+| Key Insight | Recommendation |
+|---|---|
+| **Traffic volume does not directly translate into revenue.** | **Shift focus from traffic volume to conversion and revenue efficiency** by prioritizing channels and campaigns that generate higher-quality traffic. |
+| **Traffic source quality varies significantly.** | **Optimize Google traffic** by identifying low-converting campaigns/landing pages and reallocating resources toward higher-converting traffic sources. |
+| **Traffic sources perform differently across products.** | **Increase investment in high-performing DFA campaigns** for products such as Google Men's Zip Hoodie, Google Hard Cover Journal, and Leatherette Journal, based on revenue and ROI. |
+| **Desktop significantly outperforms mobile.** | **Improve the mobile conversion funnel** by optimizing the product page, cart, and checkout experience, starting with the stage showing the largest drop-off. |
