@@ -14,11 +14,10 @@ This project uses **SQL** and **BigQuery** to analyze e-commerce data from the G
 Understand where revenue comes from, which factors influence e-commerce performance, and where the business should focus improvement efforts.
 1. How did traffic, transactions, conversion rate, and revenue change over time?
 2. Which traffic sources generated the most revenue and had the highest conversion rates?
-3. Which high-traffic sources had relatively low conversion performance?
-4. How did traffic source performance change over time?
-5. Which products generated the most revenue?
-6. Which traffic sources contributed the most revenue to the top products?
-7. How did e-commerce performance differ across devices?
+3. How did traffic source performance change over time?
+4. Which products generated the most revenue?
+5. Which traffic sources contributed the most revenue to the top products?
+6. How did e-commerce performance differ across devices?
 
 ## 👥 Target Audience
 
@@ -151,6 +150,11 @@ ORDER BY month;
 
 <img width="715" height="234" alt="image" src="https://github.com/user-attachments/assets/f281ad6a-81d9-4370-ac95-2522a9c4e267" />
 
+* **Traffic volume did not directly translate into revenue**. April generated the highest revenue ($158.8K) with 67.1K visits, while July had more visits (71.8K) but lower revenue ($124.5K).
+* --> Revenue performance depends on more than traffic volume.
+
+* **Conversion rate improved over the period**, from 1.10% in January to 1.49% in July, peaking at 1.77% in May.
+* --> Conversion efficiency improved despite revenue fluctuations.
 ### Q2. Traffic Source Performance
 
 🔎The goal of this analysis is to identify which traffic sources generate the most revenue and evaluate whether high-traffic sources also perform well in terms of conversion.
@@ -175,6 +179,11 @@ ORDER BY revenue DESC;
 
 <img width="777" height="183" alt="image" src="https://github.com/user-attachments/assets/4dd5fd0f-8efe-443c-a454-4270d100ac78" />
 
+* **Direct was the largest revenue-generating source**, with $622K revenue, 187K visits, and a 2.48% conversion rate.
+* **Google generated similar traffic to Direct but much lower conversion**: 180K visits, $152K revenue, and 0.92% conversion.
+* YouTube generated 50K visits but only 9 transactions, with a 0.02% conversion rate.
+  -->Traffic volume alone does not indicate traffic quality.
+  
 ### Q3. Source performance over time
 🔎 The goal of this analysis is to determine whether the performance patterns of major traffic sources are consistent over time.
 
@@ -209,6 +218,9 @@ ORDER BY source, month;
 <img width="720" height="409" alt="image" src="https://github.com/user-attachments/assets/c4d035ae-a357-4128-805b-499bc6f7422c" />
 <img width="716" height="407" alt="image" src="https://github.com/user-attachments/assets/ecbe3598-c971-4012-a273-f251beb546f4" />
 
+* **Direct consistently maintained relatively strong conversion**, ranging from 1.38% to 3.75% across the period.
+*  **Google consistently had high traffic but lower conversion**, around 0.78%–1.00%.
+
 ### Q4. Top 10 highest revenue products
 🔎 The goal of this analysis is to understand which products contribute the most to e-commerce revenue and whether revenue is driven by sales volume or product value.
 
@@ -234,6 +246,7 @@ LIMIT 10;
 **💡 Queries result**
 
 <img width="664" height="307" alt="image" src="https://github.com/user-attachments/assets/fda3b158-2a43-4c2b-8407-7bc6014f522a" />
+* **Product revenue was not driven by sales volume alone**. **The Men's Zip Hoodie** generated $26.4K from only 501 units, while the 22 oz Water Bottle sold 8,187 units but generated $23.2K. --> High-volume and high-value products require different merchandising strategies.
 
 ### Q5. Revenue share by traffic source for top 10 products
 🔎 The goal of this analysis is to identify which traffic sources contribute most to the revenue of high-performing products.
@@ -291,7 +304,11 @@ ORDER BY product_name;
 
 <img width="773" height="309" alt="image" src="https://github.com/user-attachments/assets/0ff706b0-fc0d-4d63-857b-b1216b15514d" />
 
+* Direct accounted for the majority of revenue for 9 of the top 10 products.
+* DFA contributed a substantial share of revenue for several products: 43.65% for Men's Zip Hoodie, 33.21% for Hard Cover Journal, and 24.71% for Leatherette Journal.
+
 ### Q6. Device performance
+
 🔎 The goal of this analysis is to identify differences in traffic, conversion, revenue, and revenue per visit across devices.
 
 🚀 **Query**
@@ -320,6 +337,8 @@ ORDER BY revenue DESC;
 
 <img width="716" height="127" alt="image" src="https://github.com/user-attachments/assets/3943b989-c735-4204-9759-921c8f7f7b6b" />
 
+* Desktop generated over 95% of revenue, with $832.5K revenue and a 1.92% conversion rate.
+* Mobile generated 133K visits but only $27.8K revenue, with a 0.38% conversion rate versus 1.92% on desktop.
 
 
 
