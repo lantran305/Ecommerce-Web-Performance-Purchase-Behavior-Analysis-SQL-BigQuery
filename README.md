@@ -246,6 +246,7 @@ LIMIT 10;
 **💡 Queries result**
 
 <img width="664" height="307" alt="image" src="https://github.com/user-attachments/assets/fda3b158-2a43-4c2b-8407-7bc6014f522a" />
+
 * **Product revenue was not driven by sales volume alone**. **The Men's Zip Hoodie** generated $26.4K from only 501 units, while the 22 oz Water Bottle sold 8,187 units but generated $23.2K. --> High-volume and high-value products require different merchandising strategies.
 
 ### Q5. Revenue share by traffic source for top 10 products
